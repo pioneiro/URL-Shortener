@@ -1,16 +1,29 @@
 import express from "express";
 import mongoose from "mongoose";
+import { customAlphabet } from "nanoid";
 
 const Schema = mongoose.Schema;
 
 const PORT = process.env.PORT || 5192;
-const host = `http://localhost:${PORT}/`;
+const host = "https://pioneiro-urlshortner.herokuapp.com/";
+
+const geturl = (id, parent) => new URL(id, parent).href;
+
+const idSize = 8;
+const genid = customAlphabet(
+	"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+	idSize
+);
 
 const dbURI =
 	"mongodb+srv://pioneiro:dKdJDmNCK6KkweDd@main.504vi.mongodb.net/url?retryWrites=true&w=majority";
 
 const urlSchema = new Schema(
 	{
+		_id: {
+			type: String,
+			default: genid,
+		},
 		url: {
 			type: String,
 			required: true,
@@ -22,8 +35,6 @@ const urlSchema = new Schema(
 const urldb = mongoose.model("URL", urlSchema);
 
 const index = express();
-
-const geturl = (id, parent) => new URL(id, parent).href;
 
 index.set("view engine", "ejs");
 
@@ -75,8 +86,10 @@ index.get("/:urlid", (req, res) => {
 	urldb.findById(req.params.urlid, (error, foundURL) => {
 		if (error) {
 			res.send(`Error accessing DB while getting URL`);
-		} else {
+		} else if (foundURL) {
 			res.redirect(foundURL.url);
+		} else {
+			res.send(`No URLs found for the given id`);
 		}
 	});
 });
