@@ -5,7 +5,7 @@ import { customAlphabet } from "nanoid";
 const Schema = mongoose.Schema;
 
 const PORT = process.env.PORT || 5192;
-const host = "https://pioneiro-urlshortner.herokuapp.com/";
+const host = "https://pioneiro-shorturl.herokuapp.com/";
 
 const geturl = (id, parent) => new URL(id, parent).href;
 
