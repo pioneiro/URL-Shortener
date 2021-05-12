@@ -66,7 +66,7 @@ index.post("/newurl", (req, res) => {
 	const newURL = new URL(req.body.url).href;
 	urldb.findOne({ url: newURL }, (errorFinding, foundURL) => {
 		if (errorFinding) {
-			res.send(`Error accessing DB while finding URL`);
+			res.render("error", { error: `Error accessing DB while finding URL` });
 		} else if (foundURL) {
 			res.render("result", { url: geturl(foundURL._id, host) });
 		} else {
@@ -76,7 +76,7 @@ index.post("/newurl", (req, res) => {
 					res.render("result", { url: geturl(savedURL._id, host) });
 				})
 				.catch((errorSaving) => {
-					res.send(`Error accessing DB whle saving URL`);
+					res.render("error", { error: `Error accessing DB whle saving URL` });
 				});
 		}
 	});
@@ -85,11 +85,11 @@ index.post("/newurl", (req, res) => {
 index.get("/:urlid", (req, res) => {
 	urldb.findById(req.params.urlid, (error, foundURL) => {
 		if (error) {
-			res.send(`Error accessing DB while getting URL`);
+			res.render("error", { error: `Error accessing DB while getting URL` });
 		} else if (foundURL) {
 			res.redirect(foundURL.url);
 		} else {
-			res.send(`No URLs found for the given id`);
+			res.render("error", { error: `No URLs found for the given ID` });
 		}
 	});
 });

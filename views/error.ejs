@@ -13,22 +13,14 @@
   <main>
     <h1 id="heading">URL Shortner</h1>
     <form id="disabled">
-      <label for="url" class="url">URL: <input type="url" class="url" id="url" value="<%= url %>" readonly /></label>
+      <label for="error" class="error">ERROR: <input type="error" class="error" id="error" value="<%= error %>"
+          disabled /></label>
       <div id="btn-grp">
         <button type="button" id="back">Back</button>
-        <button type="button" id="copy">Copy URL</button>
-        <button type="button" id="redirect"><a href="<%= url %>" target="_blank">Redirect</a></button>
       </div>
     </form>
   </main>
   <script src="/script.js" type="text/javascript"></script>
-  <script type="text/javascript">
-    document.getElementById("copy").addEventListener("click", (e) => {
-      document.getElementById("url").select();
-      document.execCommand("copy");
-      e.target.innerText = "Copied";
-    });
-  </script>
 </body>
 
 </html>

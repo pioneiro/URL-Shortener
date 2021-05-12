@@ -13,7 +13,8 @@ main {
 }
 
 main,
-form#shortner {
+form#shortner,
+form#disabled {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -25,12 +26,14 @@ h1#heading {
 	font-size: 64px;
 }
 
-.url {
+.url,
+.error {
 	margin: 20px;
 	font-size: 32px;
 }
 
-.url#url {
+.url#url,
+.error#error {
 	background-color: #e9c46a;
 	border: none;
 	color: #264653;
@@ -58,6 +61,6 @@ h1#heading {
 #btn-grp {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
-	width: 35vw;
+	justify-content: space-around;
+	width: 40vw;
 }
