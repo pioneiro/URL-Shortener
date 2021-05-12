@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const PORT = process.env.PORT || 5192;
-const host = `http://localhost:${PORT}/`;
+const host = "https://pioneiro-urlshortner.herokuapp.com/";
 
 const dbURI =
 	"mongodb+srv://pioneiro:dKdJDmNCK6KkweDd@main.504vi.mongodb.net/url?retryWrites=true&w=majority";
