@@ -1,0 +1,21 @@
+{
+	"name": "url-shortner",
+	"version": "0.0.1",
+	"description": "Web tool to shorten given URL",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"start": "node index.js"
+	},
+	"keywords": [
+		"url-shortner",
+		"short-url"
+	],
+	"author": "Soumyajit Das",
+	"license": "ISC",
+	"dependencies": {
+		"ejs": "^3.1.6",
+		"express": "^4.17.1",
+		"mongoose": "^5.12.8"
+	}
+}
