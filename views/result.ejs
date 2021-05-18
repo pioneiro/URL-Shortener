@@ -31,6 +31,10 @@
 				document.getElementById("url").select();
 				document.execCommand("copy");
 				e.target.innerText = "Copied";
+				document.getSelection().removeAllRanges();
+				setTimeout(() => {
+					e.target.innerText = "Copy URL";
+				}, 750);
 			});
 		</script>
 	</body>
