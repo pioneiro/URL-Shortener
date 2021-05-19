@@ -1,6 +1,9 @@
 import express from "express";
 import mongoose from "mongoose";
 import { customAlphabet } from "nanoid";
+import { config } from "dotenv";
+
+config();
 
 const Schema = mongoose.Schema;
 
@@ -15,8 +18,7 @@ const genid = customAlphabet(
 	idSize
 );
 
-const dbURI =
-	"mongodb+srv://pioneiro:dKdJDmNCK6KkweDd@main.504vi.mongodb.net/url?retryWrites=true&w=majority";
+const dbURI = `mongodb+srv://pioneiro:${process.env.db_password}@main.504vi.mongodb.net/url?retryWrites=true&w=majority`;
 
 const urlSchema = new Schema(
 	{
